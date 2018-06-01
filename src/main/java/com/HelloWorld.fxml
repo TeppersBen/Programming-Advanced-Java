@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+
+<?import java.lang.*?>
+<?import com.MultiSelectListView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.Controller">
+	<top>
+		<VBox>
+			<MenuBar>
+				<menus>
+					<Menu text="File">
+						<items>
+							<MenuItem text="New Order" onAction="#createNewOrder"/>
+							<MenuItem text="Open" onAction="#openAnOrder"/>
+							<MenuItem text="Save" onAction="#saveAnOrder"/>
+							<Menu text="Save as ..">
+								<items>
+									<MenuItem text="XML" onAction="#saveOrderAsXML"/>
+									<MenuItem text="Text" onAction="#saveOrderAsText"/>
+								</items>
+							</Menu>
+							<MenuItem text="Exit" onAction="#exitApplication"/>
+						</items>
+					</Menu>
+					<Menu text="Help">
+						<items>
+							<MenuItem text="About" onAction="#showAboutDetails"/>
+						</items>
+					</Menu>
+				</menus>
+			</MenuBar>
+			
+			<FlowPane vgap="10" hgap="10" alignment="CENTER" prefHeight="40">
+				<Label text="Name:"/>
+				<TextField layoutY="20" fx:id="customerNameText"/>
+				<Label text="Email:"/>
+				<TextField layoutY="20" fx:id="customerEmailText"/>
+				<Label text="Delivery date:"/>
+				<DatePicker layoutX="20" layoutY="20" fx:id="deliveryDatePicker"/>
+				<Button text="Order" onAction="#createOrder"/>
+			</FlowPane>
+		</VBox>
+	</top>
+	
+	<left>
+		<BorderPane>
+			<top><Label text="Ingredients"/></top>
+			<center>
+				<MultiSelectListView prefWidth="150" prefHeight="200" fx:id="pizzaIngredientsMultiList">
+					<items>
+						<FXCollections fx:factory="observableArrayList">
+							<String fx:value="Bacon"/>
+							<String fx:value="Cheese"/>
+							<String fx:value="Mushrooms"/>
+							<String fx:value="Oregano"/>
+							<String fx:value="Salami"/>
+							<String fx:value="Tomatoes"/>
+							<String fx:value="Shrimps"/>
+							<String fx:value="Onions"/>
+							<String fx:value="Garlic"/>
+							<String fx:value="Artichoke"/>
+						</FXCollections>
+					</items>
+				</MultiSelectListView>
+			</center>
+		</BorderPane>	
+	</left>
+	
+	<center>
+		<ImageView fitWidth="600" fitHeight="250" cache="true" managed="true">
+			<Image url="@Pizza.jpg"/>
+		</ImageView>
+	</center>
+	
+	<bottom>
+		<FlowPane vgap="10" hgap="10" alignment="CENTER" prefHeight="40">
+			<Label text="Bottom:"/>
+			
+			<fx:define>
+				<ToggleGroup fx:id="pizzaBottomToggleGroup"/>
+			</fx:define>
+			<RadioButton text="Traditional" toggleGroup="$pizzaBottom"/>
+			<RadioButton text="Crusty" toggleGroup="$pizzaBottom"/>
+			
+			<CheckBox text="Spicy"/>
+			<Label text="Size:"/>
+			<ComboBox fx:id="pizzaSizeComboBox">
+				<items>
+					<FXCollections fx:factory="observableArrayList">
+						<String fx:value="Small"/>
+						<String fx:value="Medium"/>
+						<String fx:value="Large"/>
+					</FXCollections>
+				</items>
+			</ComboBox>
+			<Label text="Number:"/>
+			<TextField fx:id="pizzaAmountText"/>
+		</FlowPane>
+	</bottom>
+</BorderPane>

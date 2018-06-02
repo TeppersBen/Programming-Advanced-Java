@@ -1,4 +1,4 @@
-package com;
+package com.frame;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

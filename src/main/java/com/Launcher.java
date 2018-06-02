@@ -13,14 +13,14 @@ public class Launcher extends Application {
 	}
 
 	@Override
-	public void start(Stage state) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("frame/HelloWorld.fxml"));
+	public void start(Stage stage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/HelloWorld.fxml"));
 		Scene scene = new Scene(root);
-		state.setTitle("Pizza");
-		state.setScene(scene);
-		state.resizableProperty().set(false);
-		state.sizeToScene();
-		state.show();
+		stage.setTitle("PizzaHouse - Order Utility");
+		stage.setScene(scene);
+		stage.resizableProperty().set(false);
+		stage.sizeToScene();
+		stage.show();
 	}
 	
 }

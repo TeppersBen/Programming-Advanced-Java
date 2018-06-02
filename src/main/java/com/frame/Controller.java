@@ -1,7 +1,13 @@
 package com.frame;
 
+import java.time.format.DateTimeFormatter;
+
+import com.database.PizzaOrderService;
+import com.entities.PizzaOrder;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -10,6 +16,8 @@ import javafx.scene.control.ToggleGroup;
 //fx:controller="com.Controller"
 public class Controller {
 
+	private PizzaOrderService pizzaService = new PizzaOrderService();
+	
 	@FXML
 	private ComboBox<String> pizzaSizeComboBox;
 	@FXML
@@ -24,10 +32,23 @@ public class Controller {
 	private TextField customerNameText;
 	@FXML
 	private TextField customerEmailText;
+	@FXML
+	private CheckBox pizzaSpicy;
 	
 	@FXML
 	private void createOrder(ActionEvent e) {
-		System.out.println("#createOrder");
+		PizzaOrder order = new PizzaOrder();
+		
+		order.setAmount(Integer.parseInt(pizzaAmountText.getText()));
+		order.setCustomerEmail(customerEmailText.getText());
+		order.setCustomerName(customerNameText.getText());
+		order.setDeliveryDate(deliveryDatePicker.getValue().format(DateTimeFormatter.ofPattern("dd LLLL yyyy")));
+		order.setIngredients(pizzaIngredientsMultiList.getItems());
+		order.setPizzaBottom(pizzaBottomToggleGroup.getSelectedToggle().toString());
+		order.setSize(pizzaSizeComboBox.getValue());
+		order.setSpicy(pizzaSpicy.isSelected());
+		
+		pizzaService.createOrder(order);
 	}
 	
 	@FXML

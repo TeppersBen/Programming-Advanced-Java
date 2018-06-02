@@ -88,7 +88,7 @@
 			<RadioButton text="Traditional" toggleGroup="$pizzaBottomToggleGroup"/>
 			<RadioButton text="Crusty" toggleGroup="$pizzaBottomToggleGroup"/>
 			
-			<CheckBox text="Spicy"/>
+			<CheckBox text="Spicy" fx:id="pizzaSpicy"/>
 			<Label text="Size:"/>
 			<ComboBox fx:id="pizzaSizeComboBox">
 				<items>

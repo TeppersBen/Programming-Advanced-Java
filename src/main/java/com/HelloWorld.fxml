@@ -85,8 +85,8 @@
 			<fx:define>
 				<ToggleGroup fx:id="pizzaBottomToggleGroup"/>
 			</fx:define>
-			<RadioButton text="Traditional" toggleGroup="$pizzaBottom"/>
-			<RadioButton text="Crusty" toggleGroup="$pizzaBottom"/>
+			<RadioButton text="Traditional" toggleGroup="$pizzaBottomToggleGroup"/>
+			<RadioButton text="Crusty" toggleGroup="$pizzaBottomToggleGroup"/>
 			
 			<CheckBox text="Spicy"/>
 			<Label text="Size:"/>

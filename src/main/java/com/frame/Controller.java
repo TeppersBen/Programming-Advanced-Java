@@ -39,14 +39,16 @@ public class Controller {
 	private void createOrder(ActionEvent e) {
 		PizzaOrder order = new PizzaOrder();
 		
-		order.setAmount(Integer.parseInt(pizzaAmountText.getText()));
-		order.setCustomerEmail(customerEmailText.getText());
 		order.setCustomerName(customerNameText.getText());
-		order.setDeliveryDate(deliveryDatePicker.getValue().format(DateTimeFormatter.ofPattern("dd LLLL yyyy")));
-		order.setIngredients(pizzaIngredientsMultiList.getItems());
-		order.setPizzaBottom(pizzaBottomToggleGroup.getSelectedToggle().toString());
+		order.setCustomerEmail(customerEmailText.getText());
+		order.setPizzaBottom(pizzaBottomToggleGroup.getSelectedToggle().toString().substring(
+				pizzaBottomToggleGroup.getSelectedToggle().toString().indexOf("'")+1,
+				pizzaBottomToggleGroup.getSelectedToggle().toString().length()-1));
 		order.setSize(pizzaSizeComboBox.getValue());
 		order.setSpicy(pizzaSpicy.isSelected());
+		order.setIngredients(pizzaIngredientsMultiList.getSelectionModel().getSelectedItems().toString());
+		order.setAmount(Integer.parseInt(pizzaAmountText.getText()));
+		order.setDeliveryDate(deliveryDatePicker.getValue().format(DateTimeFormatter.ofPattern("dd LLLL yyyy")));
 		
 		pizzaService.createOrder(order);
 	}

@@ -1,20 +1,18 @@
 package com.entities;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class PizzaOrder {
 
+	@Id
 	private long id;
 	
 	private String customerName;
 	private String customerEmail;
 	private String deliveryDate;
-	private List<String> ingredients;
+	private String ingredients;
 	private String pizzaBottom;
 	private boolean spicy;
 	private String size;
@@ -22,7 +20,7 @@ public class PizzaOrder {
 	
 	public PizzaOrder() {}
 	
-	public PizzaOrder(long id, String customerName, String customerEmail, String deliveryDate, List<String> ingredients,
+	public PizzaOrder(long id, String customerName, String customerEmail, String deliveryDate, String ingredients,
 			String pizzaBottom, boolean spicy, String size, int amount) {
 		super();
 		this.id = id;
@@ -36,8 +34,6 @@ public class PizzaOrder {
 		this.amount = amount;
 	}
 
-	@Id
-	@GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -62,10 +58,10 @@ public class PizzaOrder {
 	public void setDeliveryDate(String deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
-	public List<String> getIngredients() {
+	public String getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(List<String> ingredients) {
+	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
 	}
 	public String getPizzaBottom() {
@@ -93,4 +89,8 @@ public class PizzaOrder {
 		this.amount = amount;
 	}
 	
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + ":[" + id + " " + customerName + " " + customerEmail + " " + pizzaBottom + " " + size + " " + ingredients + " " + amount + " " + deliveryDate + "]";
+	}
 }

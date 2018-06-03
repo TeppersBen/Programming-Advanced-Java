@@ -7,9 +7,9 @@
 <?import javafx.scene.image.*?>
 
 <?import java.lang.*?>
-<?import com.frame.MultiSelectListView?>
+<?import com.utils.MultiSelectListView?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.frame.Controller">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.controllers.MainWindowController">
 	<top>
 		<VBox>
 			<MenuBar>

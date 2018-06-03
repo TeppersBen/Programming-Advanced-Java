@@ -1,9 +1,10 @@
-package com.frame;
+package com.controllers;
 
 import java.time.format.DateTimeFormatter;
 
 import com.database.PizzaOrderService;
 import com.entities.PizzaOrder;
+import com.utils.MultiSelectListView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 //fx:controller="com.Controller"
-public class Controller {
+public class MainWindowController {
 
 	private PizzaOrderService pizzaService = new PizzaOrderService();
 	

@@ -14,9 +14,6 @@ public class PizzaOrder {
 	@GeneratedValue
 	private long id;
 	
-	@Column(name="Customer_Name")
-	private String customerName;
-	
 	@Column(name="Customer_Email")
 	private String customerEmail;
 	
@@ -40,11 +37,10 @@ public class PizzaOrder {
 	
 	public PizzaOrder() {}
 	
-	public PizzaOrder(long id, String customerName, String customerEmail, String deliveryDate, String ingredients,
+	public PizzaOrder(long id, String customerEmail, String deliveryDate, String ingredients,
 			String pizzaBottom, boolean spicy, String size, int amount) {
 		super();
 		this.id = id;
-		this.customerName = customerName;
 		this.customerEmail = customerEmail;
 		this.deliveryDate = deliveryDate;
 		this.ingredients = ingredients;
@@ -59,12 +55,6 @@ public class PizzaOrder {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public String getCustomerName() {
-		return customerName;
-	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
 	}
 	public String getCustomerEmail() {
 		return customerEmail;
@@ -111,6 +101,6 @@ public class PizzaOrder {
 	
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + ":[" + id + " " + customerName + " " + customerEmail + " " + pizzaBottom + " " + size + " " + ingredients + " " + amount + " " + deliveryDate + "]";
+		return getClass().getSimpleName() + ":[" + id + " " + customerEmail + " " + pizzaBottom + " " + size + " " + ingredients + " " + amount + " " + deliveryDate + "]";
 	}
 }

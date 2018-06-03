@@ -33,18 +33,13 @@ public class MainWindowController {
 	@FXML
 	private DatePicker deliveryDatePicker;
 	@FXML
-	private TextField customerNameText;
-	@FXML
-	private TextField customerEmailText;
-	@FXML
 	private CheckBox pizzaSpicy;
 	
 	@FXML
 	private void createOrder(ActionEvent e) {
 		PizzaOrder order = new PizzaOrder();
 		
-		order.setCustomerName(customerNameText.getText());
-		order.setCustomerEmail(customerEmailText.getText());
+		order.setCustomerEmail(Session.getCustomer().getCustomerEmail());
 		order.setPizzaBottom(pizzaBottomToggleGroup.getSelectedToggle().toString().substring(
 				pizzaBottomToggleGroup.getSelectedToggle().toString().indexOf("'")+1,
 				pizzaBottomToggleGroup.getSelectedToggle().toString().length()-1));
@@ -101,5 +96,6 @@ public class MainWindowController {
 	@FXML
 	private void processLogout(ActionEvent e) throws IOException {
 		Session.getStage().setScene(SceneHandler.getCustomerLoginScene());
+		Session.setCustomer(null);
 	}
 }

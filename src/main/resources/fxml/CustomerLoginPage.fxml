@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.CustomerLoginController">
+	<VBox minWidth="350" minHeight="200" alignment="CENTER">
+		<Label text="Login"/>
+		<TextField maxWidth="200" alignment="CENTER" promptText="email" fx:id="customerEmail"/>
+		<PasswordField maxWidth="200" alignment="CENTER" promptText="password" fx:id="customerPassword"/>
+		<Button maxWidth="100" text="Login" onAction="#processLogin"/>
+		<Button maxWidth="100" text="Register" onAction="#processRegister"/>
+	</VBox>
+</GridPane>

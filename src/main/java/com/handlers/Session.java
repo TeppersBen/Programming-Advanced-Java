@@ -2,12 +2,19 @@ package com.handlers;
 
 import com.entities.Customer;
 
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Session {
 
 	private static Stage stage;
 	private static Customer customer;
+	
+	public static void changeScene(Scene scene) {
+		stage.hide();
+		stage.setScene(scene);
+		stage.show();
+	}
 	
 	public static Stage getStage() {
 		return stage;

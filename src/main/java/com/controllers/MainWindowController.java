@@ -95,7 +95,7 @@ public class MainWindowController {
 	
 	@FXML
 	private void processLogout(ActionEvent e) throws IOException {
-		Session.getStage().setScene(SceneHandler.getCustomerLoginScene());
+		Session.changeScene(SceneHandler.getCustomerLoginScene());
 		Session.setCustomer(null);
 	}
 }

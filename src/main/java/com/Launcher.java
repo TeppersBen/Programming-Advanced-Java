@@ -1,13 +1,15 @@
 package com;
 
-import com.handlers.StageHandler;
+import com.handlers.Session;
 import com.services.ProtocolService;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Launcher extends Application {
 
@@ -24,9 +26,18 @@ public class Launcher extends Application {
 		stage.setScene(scene);
 		stage.resizableProperty().set(false);
 		stage.sizeToScene();
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+			@Override
+			public void handle(WindowEvent arg0) {
+				stage.close();
+				System.exit(2);
+			}
+			
+		});
 		stage.show();
 		
-		StageHandler.setStage(stage);
+		Session.setStage(stage);
 	}
 	
 	private static void initDatabaseConnection() {

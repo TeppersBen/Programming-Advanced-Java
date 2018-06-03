@@ -6,13 +6,12 @@ import javax.persistence.NoResultException;
 
 import com.entities.Customer;
 import com.exceptions.ServiceException;
-import com.handlers.StageHandler;
+import com.handlers.SceneHandler;
+import com.handlers.Session;
 import com.services.CustomerService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -41,9 +40,8 @@ public class CustomerLoginController {
 			try {
 				customerService.processLogin(customer);
 				errorLabel.setText("Logging in..");
-
-                Scene secondScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml")));
-                StageHandler.getStage().setScene(secondScene);				
+				
+                Session.getStage().setScene(SceneHandler.getPizzaOrderScene());				
 			} catch (ServiceException ex) {
 				errorLabel.setText("Customer email or password is incorrect..");
 			} catch (NoResultException ex) {

@@ -1,8 +1,11 @@
 package com.controllers;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
 import com.entities.PizzaOrder;
+import com.handlers.SceneHandler;
+import com.handlers.Session;
 import com.services.PizzaOrderService;
 import com.utils.MultiSelectListView;
 
@@ -81,11 +84,22 @@ public class MainWindowController {
 	
 	@FXML
 	private void exitApplication(ActionEvent e) {
-		System.out.println("#exitApplication");
+		Session.getStage().close();
+		System.exit(2);
 	}
 	
 	@FXML
 	private void showAboutDetails(ActionEvent e) {
 		System.out.println("#showAboutDetails");
+	}
+	
+	@FXML
+	private void showCustomerProfile(ActionEvent e) {
+		System.out.println("#showCustomerProfile");
+	}
+	
+	@FXML
+	private void processLogout(ActionEvent e) throws IOException {
+		Session.getStage().setScene(SceneHandler.getCustomerLoginScene());
 	}
 }

@@ -19,13 +19,12 @@
 							<MenuItem text="New Order" onAction="#createNewOrder"/>
 							<MenuItem text="Open" onAction="#openAnOrder"/>
 							<MenuItem text="Save" onAction="#saveAnOrder"/>
-							<Menu text="Save as ..">
+							<Menu text="Save as..">
 								<items>
 									<MenuItem text="XML" onAction="#saveOrderAsXML"/>
 									<MenuItem text="Text" onAction="#saveOrderAsText"/>
 								</items>
 							</Menu>
-							<MenuItem text="Exit" onAction="#exitApplication"/>
 						</items>
 					</Menu>
 					<Menu text="Help">
@@ -33,14 +32,17 @@
 							<MenuItem text="About" onAction="#showAboutDetails"/>
 						</items>
 					</Menu>
+					<Menu text="Account">
+						<items>
+							<MenuItem text="Profile" onAction="#showCustomerProfile"/>
+							<MenuItem text="Logout" onAction="#processLogout"/>
+							<MenuItem text="Exit" onAction="#exitApplication"/>
+						</items>
+					</Menu>
 				</menus>
 			</MenuBar>
 			
 			<FlowPane vgap="10" hgap="10" alignment="CENTER" prefHeight="40">
-				<Label text="Name:"/>
-				<TextField layoutY="20" fx:id="customerNameText"/>
-				<Label text="Email:"/>
-				<TextField layoutY="20" fx:id="customerEmailText"/>
 				<Label text="Delivery date:"/>
 				<DatePicker layoutX="20" layoutY="20" fx:id="deliveryDatePicker"/>
 				<Button text="Order" onAction="#createOrder"/>

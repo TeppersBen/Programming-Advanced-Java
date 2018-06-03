@@ -1,14 +1,18 @@
 package com.controllers;
 
-import com.services.CustomerService;
+import java.io.IOException;
 
 import javax.persistence.NoResultException;
 
 import com.entities.Customer;
 import com.exceptions.ServiceException;
+import com.handlers.StageHandler;
+import com.services.CustomerService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -27,7 +31,7 @@ public class CustomerLoginController {
 	private PasswordField customerPassword;
 
 	@FXML
-	private void processLogin(ActionEvent e) {
+	private void processLogin(ActionEvent e) throws IOException {
 		if (!checkIfOneOrMoreFieldsAreBlank()) {			
 			Customer customer = new Customer();
 			
@@ -36,6 +40,10 @@ public class CustomerLoginController {
 			
 			try {
 				customerService.processLogin(customer);
+				errorLabel.setText("Logging in..");
+
+                Scene secondScene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml")));
+                StageHandler.getStage().setScene(secondScene);				
 			} catch (ServiceException ex) {
 				errorLabel.setText("Customer email or password is incorrect..");
 			} catch (NoResultException ex) {

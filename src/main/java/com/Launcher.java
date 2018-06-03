@@ -14,7 +14,7 @@ public class Launcher extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/HelloWorld.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/CustomerLoginPage.fxml"));
 		Scene scene = new Scene(root);
 		stage.setTitle("PizzaHouse - Order Utility");
 		stage.setScene(scene);

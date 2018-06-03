@@ -15,5 +15,6 @@
 		<PasswordField maxWidth="200" alignment="CENTER" promptText="password" fx:id="customerPassword"/>
 		<Button maxWidth="100" text="Login" onAction="#processLogin"/>
 		<Button maxWidth="100" text="Register" onAction="#processRegister"/>
+		<Label text="" fx:id="errorLabel"/>
 	</VBox>
 </GridPane>

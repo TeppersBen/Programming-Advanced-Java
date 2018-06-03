@@ -1,5 +1,6 @@
 package com;
 
+import com.handlers.StageHandler;
 import com.services.ProtocolService;
 
 import javafx.application.Application;
@@ -24,6 +25,8 @@ public class Launcher extends Application {
 		stage.resizableProperty().set(false);
 		stage.sizeToScene();
 		stage.show();
+		
+		StageHandler.setStage(stage);
 	}
 	
 	private static void initDatabaseConnection() {

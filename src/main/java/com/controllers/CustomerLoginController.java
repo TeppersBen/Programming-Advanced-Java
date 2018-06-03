@@ -41,7 +41,8 @@ public class CustomerLoginController {
 				customerService.processLogin(customer);
 				errorLabel.setText("Logging in..");
 				
-                Session.getStage().setScene(SceneHandler.getPizzaOrderScene());				
+                Session.getStage().setScene(SceneHandler.getPizzaOrderScene());
+                Session.setCustomer(customer);
 			} catch (ServiceException ex) {
 				errorLabel.setText("Customer email or password is incorrect..");
 			} catch (NoResultException ex) {

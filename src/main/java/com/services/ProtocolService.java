@@ -11,4 +11,6 @@ public interface ProtocolService {
 	final EntityManager EM = EMF.createEntityManager();
 	final EntityTransaction TX = EM.getTransaction();
 	
+	public static void InitializeDatabaseConnection() {}
+	
 }

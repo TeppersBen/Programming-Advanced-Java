@@ -1,5 +1,7 @@
 package com;
 
+import com.services.ProtocolService;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +11,10 @@ import javafx.stage.Stage;
 public class Launcher extends Application {
 
 	public static void main(String[] args) {
+		Thread assistance = new Thread(() -> {
+			ProtocolService.InitializeDatabaseConnection();
+		});
+		assistance.start();
 		launch(args);
 	}
 

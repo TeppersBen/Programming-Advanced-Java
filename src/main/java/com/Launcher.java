@@ -11,10 +11,7 @@ import javafx.stage.Stage;
 public class Launcher extends Application {
 
 	public static void main(String[] args) {
-		Thread assistance = new Thread(() -> {
-			ProtocolService.InitializeDatabaseConnection();
-		});
-		assistance.start();
+		initDatabaseConnection();
 		launch(args);
 	}
 
@@ -27,6 +24,13 @@ public class Launcher extends Application {
 		stage.resizableProperty().set(false);
 		stage.sizeToScene();
 		stage.show();
+	}
+	
+	private static void initDatabaseConnection() {
+		Thread assistance = new Thread(() -> {
+			ProtocolService.InitializeDatabaseConnection();
+		});
+		assistance.start();
 	}
 	
 }

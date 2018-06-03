@@ -19,8 +19,19 @@ public class CustomerService implements ProtocolService {
 		}
 	}
 	
-	public void processLogin(Customer customer) throws ServiceException {
-		throw new ServiceException("Not Implemented Yet!");
+	public void processLogin(Customer customer) throws ServiceException, NoResultException {
+		String q = "SELECT c FROM Customer c WHERE c.customerEmail LIKE '" + customer.getCustomerEmail() + "'";
+		Query query = EM.createQuery(q);
+		try {
+			Customer c = (Customer) query.getSingleResult();
+			if (c.getCustomerPassword().equals(customer.getCustomerPassword())) {
+				System.out.println("Processing Login..");
+			} else {
+				throw new ServiceException("Customer email or password is incorrect..");
+			}
+		} catch (NoResultException e) {
+			throw new NoResultException("There is no registered customer with this email..");
+		}
 	}
 	
 	private boolean checkIfCustomerExists(String email) {

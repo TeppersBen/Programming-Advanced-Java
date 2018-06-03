@@ -1,6 +1,9 @@
 package com.controllers;
 
 import com.services.CustomerService;
+
+import javax.persistence.NoResultException;
+
 import com.entities.Customer;
 import com.exceptions.ServiceException;
 
@@ -25,11 +28,23 @@ public class CustomerLoginController {
 
 	@FXML
 	private void processLogin(ActionEvent e) {
-		try {
-			customerService.processLogin(null);
-		} catch (ServiceException e1) {
-			System.out.println(e1);
+		if (!checkIfOneOrMoreFieldsAreBlank()) {			
+			Customer customer = new Customer();
+			
+			customer.setCustomerEmail(customerEmail.getText());
+			customer.setCustomerPassword(customerPassword.getText());
+			
+			try {
+				customerService.processLogin(customer);
+			} catch (ServiceException ex) {
+				errorLabel.setText("There is no registered customer with this email..");
+			} catch (NoResultException ex) {
+				errorLabel.setText("Customer email or password is incorrect..");
+			}
+		} else {
+			errorLabel.setText("One or more fields are empty..");
 		}
+		
 	}
 
 	@FXML

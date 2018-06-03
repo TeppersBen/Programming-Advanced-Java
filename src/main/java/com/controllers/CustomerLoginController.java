@@ -37,9 +37,9 @@ public class CustomerLoginController {
 			try {
 				customerService.processLogin(customer);
 			} catch (ServiceException ex) {
-				errorLabel.setText("There is no registered customer with this email..");
-			} catch (NoResultException ex) {
 				errorLabel.setText("Customer email or password is incorrect..");
+			} catch (NoResultException ex) {
+				errorLabel.setText("There is no registered customer with this email..");
 			}
 		} else {
 			errorLabel.setText("One or more fields are empty..");

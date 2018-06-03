@@ -1,21 +1,42 @@
 package com.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="PIZZA_ORDERS")
 public class PizzaOrder {
 
 	@Id
+	@GeneratedValue
 	private long id;
 	
+	@Column(name="Customer_Name")
 	private String customerName;
+	
+	@Column(name="Customer_Email")
 	private String customerEmail;
+	
+	@Column(name="Delivery_Date")
 	private String deliveryDate;
+	
+	@Column(name="Ingredients")
 	private String ingredients;
+	
+	@Column(name="Pizza_Bottom")
 	private String pizzaBottom;
+	
+	@Column(name="Pizza_isSpicy")
 	private boolean spicy;
+	
+	@Column(name="Pizza_Size")
 	private String size;
+	
+	@Column(name="Order_Amount")
 	private int amount;
 	
 	public PizzaOrder() {}

@@ -1,7 +1,7 @@
 package com;
 
-import com.handlers.Session;
-import com.services.ProtocolService;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -11,11 +11,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import com.handlers.Session;
+import com.services.ProtocolService;
+
 public class Launcher extends Application {
 
 	public static void main(String[] args) {
 		initDatabaseConnection();
 		launch(args);
+		Client client = ClientBuilder.newClient();
+		System.out.println(client.target("http://localhost:8080/Webcomponents/rest/hello"));
 	}
 
 	@Override

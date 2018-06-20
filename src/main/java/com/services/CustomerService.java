@@ -19,6 +19,17 @@ public class CustomerService implements ProtocolService {
 		}
 	}
 	
+	public Customer get(int id) {
+		String q = "SELECT c FROM Customer c WHERE c.id LIKE " + id;
+		Query query = EM.createQuery(q);
+		try {
+			return (Customer) query.getSingleResult();
+		} catch (NoResultException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
 	public void processLogin(Customer customer) throws ServiceException, NoResultException {
 		String q = "SELECT c FROM Customer c WHERE c.customerEmail LIKE '" + customer.getCustomerEmail() + "'";
 		Query query = EM.createQuery(q);

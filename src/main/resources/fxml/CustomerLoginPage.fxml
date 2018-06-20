@@ -8,7 +8,13 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.image.*?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.CustomerLoginController">
+<?import java.net.URL?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+		  fx:controller="com.controllers.CustomerLoginController">
+	<stylesheets>
+		<URL value="@/fxml/CustomerLoginPage.css"/>
+	</stylesheets>
 	<VBox minWidth="350" minHeight="200" alignment="CENTER">
 		<Label text="Login"/>
 		<TextField maxWidth="200" alignment="CENTER" promptText="email" fx:id="customerEmail"/>
